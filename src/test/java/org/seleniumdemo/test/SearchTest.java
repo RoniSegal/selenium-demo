@@ -15,9 +15,6 @@ public class SearchTest extends Base {
         SearchResultPage searchResultPage = new SearchResultPage(driver);
 
         homePage.loadHomePage();
-        homePage.search("dress");
-
-        boolean isDressDisplayed = searchResultPage.isResultItemDisplayed("Printed Chiffon Dress");
-        assertTrue(isDressDisplayed);
+        homePage.clickIncrement();
     }
 }

@@ -7,10 +7,14 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class Base implements SauceOnDemandSessionIdProvider {
@@ -33,7 +37,7 @@ public class Base implements SauceOnDemandSessionIdProvider {
     public void setUp() throws Exception {
         String browserName = System.getProperty("browserName");
 
-        driver = BrowserFactory.getBrowser(browserName);
+        driver = BrowserFactory.getBrowser("chrome");
 
         this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
         driver.manage().timeouts().implicitlyWait(Wait.EXPLICIT_WAIT, TimeUnit.SECONDS);
@@ -41,6 +45,7 @@ public class Base implements SauceOnDemandSessionIdProvider {
 
     @After
     public void tearDown() throws Exception {
+        driver.navigate().to("about:blank");
         driver.quit();
     }
 

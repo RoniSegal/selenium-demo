@@ -12,6 +12,9 @@ public class HomePage {
     @FindBy(linkText = "Women")
     private WebElement womenMenu;
 
+    @FindBy(id = "btn")
+    private WebElement button;
+
     @FindBy(name = "search_query")
     private WebElement searchField;
 
@@ -28,12 +31,16 @@ public class HomePage {
     }
 
     public void loadHomePage() {
-        driver.get("http://automationpractice.com/index.php");
+        driver.get("http://localhost:3333");
     }
 
     public void search(String searchText) {
         Objects.requireNonNull(searchText);
         searchField.sendKeys(searchText);
         searchField.sendKeys(Keys.ENTER);
+    }
+
+    public void clickIncrement() {
+        button.click();
     }
 }

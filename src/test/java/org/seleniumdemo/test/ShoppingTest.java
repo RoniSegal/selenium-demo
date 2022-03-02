@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class ShoppingTest extends Base {
 
-    @Test
+//    @Test
     public void addShortsToCartValidatePriceAndCleanCart() throws Exception {
         HomePage homePage = new HomePage(driver);
         CategoryPage categoryPage = new CategoryPage(driver);
